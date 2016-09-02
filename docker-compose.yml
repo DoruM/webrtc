@@ -1,0 +1,15 @@
+version: '2'
+services:
+  coturn:
+    build: coturn 
+    command: /usr/bin/turnserver
+  kaazing.example.com:
+    build: gateway 
+    ports: 
+    - "8000:8000"
+    - "3478:3478"
+    environment:
+    - GATEWAY_OPTS=-Dfeature.turn.proxy
+  activemq:
+    image: webcenter/activemq:latest
+  
