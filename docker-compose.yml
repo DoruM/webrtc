@@ -7,9 +7,14 @@ services:
     build: gateway 
     ports: 
     - "8000:8000"
-    - "3478:3478"
     environment:
     - GATEWAY_OPTS=-Dfeature.turn.proxy
   activemq:
     image: webcenter/activemq:latest
+  turn.proxy:
+    build: turn-gateway 
+    ports: 
+    - "3478:3478"
+    environment:
+    - GATEWAY_OPTS=-Dfeature.turn.proxy
   

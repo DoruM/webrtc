@@ -1,0 +1,59 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="AccessFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${GATEWAY_LOG_DIRECTORY}/access.log"/>
+        <param name="Append" value="true"/>
+        <!-- max file size default is 10MB -->
+        <!--param name="MaxFileSize" value="100000"/-->
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="EventsFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${GATEWAY_LOG_DIRECTORY}/events.log"/>
+        <param name="Append" value="true"/>
+        <!-- max file size default is 10MB -->
+        <!--param name="MaxFileSize" value="100000"/-->
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ProxyFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${GATEWAY_LOG_DIRECTORY}/proxy.log"/>
+        <param name="Append" value="true"/>
+        <!-- max file size default is 10MB -->
+        <!--param name="MaxFileSize" value="100000"/-->
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ErrorFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${GATEWAY_LOG_DIRECTORY}/error.log"/>
+        <param name="Append" value="true"/>
+        <!-- max file size default is 10MB -->
+        <!--param name="MaxFileSize" value="100000"/-->
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="trace"/>
+        <appender-ref ref="ErrorFile"/>  
+        <appender-ref ref="STDOUT"/>   		
+    </root>
+
+</log4j:configuration>
